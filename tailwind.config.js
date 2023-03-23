@@ -10,6 +10,6 @@ module.exports = {
     require('@tailwindcss/forms')({
       strategy: 'base'
     }),
-    
+    require('@tailwindcss/typography')
   ],
 }
