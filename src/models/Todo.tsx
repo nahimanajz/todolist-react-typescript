@@ -1,8 +1,8 @@
 export interface Todo {
     id:string,
-    Name: string,
-    Text: string,
-    DueDate: Date,
-    Priority:string,
-    Done: boolean,
+    name: string,
+    text: string,
+    dueDate: Date,
+    priority:"High"| "Low" | "Normal",
+    done: boolean,
 }

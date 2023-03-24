@@ -19,11 +19,11 @@ We want to focus on frontend work, so for backend we will use JSON Server [JSON 
 
 ### Data model
 #### ToDo Item
-- Done (boolean true/false)
+- done (boolean true/false)
 - Name (short text)
-- Priority (Low, Normal, High)
+- priority (Low, Normal, High)
 - Due date
-- Text (long text)
+- text (long text)
 ### Items list screen
 On this screen user should be able to see list of to do items and its state.
 ### Delete item
