@@ -44,11 +44,11 @@ export const EditTodo = ({ todo }: EditTodoProps) => {
         setLoading(false);
       }
   };
-  useEffect(() => {
-    // setUpdatedTodo(todo)
-  }, [updatedTodo]);
+  // useEffect(() => {
 
-  const { id, name, done, text, dueDate, priority } = updatedTodo;
+  // }, [updatedTodo]);
+
+  const {name, done, text, dueDate, priority } = updatedTodo;
   return (
     <>
       <PencilSquareIcon

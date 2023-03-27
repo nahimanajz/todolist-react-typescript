@@ -1,8 +1,8 @@
 import { Todo } from "@/models/Todo";
+import { SERVER_URL } from "../../utils";
 import {
   CheckCircleIcon,
   NoSymbolIcon,
-  PencilSquareIcon,
   TrashIcon,
 } from "@heroicons/react/24/solid";
 import { ReactElement } from "react";
@@ -10,13 +10,19 @@ import { EditTodo } from "../form/EditTodo";
 
 const TaskItem = ({ todo }: { todo: Todo }): ReactElement => {
   const { id, name, done, text, dueDate, priority } = todo;
-  const handleDelete =(): void=>{
-    //TODO: call parent delete  method 
 
-  }
-  const openEditDialog = (): void => {
-
-  }
+  const handleDeleteTodo = async (id: string) => {
+    try {
+      const response = await fetch(`${SERVER_URL}/${id}`, {
+        method: "DELETE",
+      });
+      if (!response.ok) {
+        throw new Error(`HTTP error${response.status}`);
+      }
+    } catch (err) {
+      console.log("something went wrong", err);
+    }
+  };
 
   return (
     <div
@@ -53,9 +59,11 @@ const TaskItem = ({ todo }: { todo: Todo }): ReactElement => {
           {dueDate.toString()}
         </h1>
         <span className="flex">
-          
-          <EditTodo todo={todo}/>
-          <TrashIcon className="h-6 w-6 text-red-500" onClick={handleDelete}/>
+          <EditTodo todo={todo} />
+          <TrashIcon
+            className="h-6 w-6 text-red-500"
+            onClick={() => handleDeleteTodo(id)}
+          />
         </span>
       </div>
     </div>
