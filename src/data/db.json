@@ -29,15 +29,6 @@
       "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus ex, quidem perspiciatis at minima nihil tempora? Harum autem saepe cum officiis assumenda hic. Quas eaque facilis necessitatibus labore earum tenetur saepe nesciunt!"
     },
     {
-      "Name": "pm install uuid",
-      "dueDate": "2023-03-25",
-      "done": "0",
-      "priority": "Normal",
-      "text": "pm install uuid",
-      "id": "bJ-YKj9",
-      "name": "NPM"
-    },
-    {
       "Name": "application ",
       "dueDate": "2023-03-22",
       "done": "1",
@@ -52,13 +43,6 @@
       "done": "0",
       "text": "make a move",
       "id": "cUXWt6J"
-    },
-    {
-      "name": "Jz modifies 112",
-      "dueDate": "2023-03-28",
-      "done": "1",
-      "text": "loremdjajsdlajsdljalsdjla\ndajsdkljasd\ndasjdlk\n",
-      "id": "0GxHFr1"
     }
   ]
 }

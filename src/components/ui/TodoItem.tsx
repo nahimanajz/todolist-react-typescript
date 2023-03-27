@@ -8,20 +8,11 @@ import {
 import { ReactElement } from "react";
 import { EditTodo } from "../form/EditTodo";
 
-const TaskItem = ({ todo }: { todo: Todo }): ReactElement => {
+const TaskItem = ({ todo, deleteTodo }: { todo: Todo, deleteTodo:Function }): ReactElement => {
   const { id, name, done, text, dueDate, priority } = todo;
 
   const handleDeleteTodo = async (id: string) => {
-    try {
-      const response = await fetch(`${SERVER_URL}/${id}`, {
-        method: "DELETE",
-      });
-      if (!response.ok) {
-        throw new Error(`HTTP error${response.status}`);
-      }
-    } catch (err) {
-      console.log("something went wrong", err);
-    }
+    deleteTodo(id)
   };
 
   return (

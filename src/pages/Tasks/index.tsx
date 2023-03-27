@@ -24,6 +24,18 @@ export const TasksList: FC = (): ReactElement => {
       setLoading(false);
     }
   };
+  const deleteTodo=async(id: string) => {
+    try {
+      const response = await fetch(`${SERVER_URL}/${id}`, {
+        method: "DELETE",
+      });
+      if (!response.ok) {
+        throw new Error(`HTTP error${response.status}`);
+      }
+    } catch (err) {
+      console.log("something went wrong", err);
+    }
+  }
 
   useEffect(() => {
     fetchTodos();
@@ -39,7 +51,7 @@ export const TasksList: FC = (): ReactElement => {
           <div className="text-red-500">Something went wrong</div>
         ) : (
           todos &&
-          todos.map((todo) =><TodoItem todo={todo}/>)
+          todos.map((todo) =><TodoItem todo={todo} deleteTodo={deleteTodo}/>)
         )}
       </div>
     </>

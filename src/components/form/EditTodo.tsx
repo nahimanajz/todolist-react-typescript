@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 interface EditTodoProps {
   todo: Todo;
+//  handleUpdate: Function,
 }
 //{ todo }: { todo: Todo }
 
@@ -44,9 +45,6 @@ export const EditTodo = ({ todo }: EditTodoProps) => {
         setLoading(false);
       }
   };
-  // useEffect(() => {
-
-  // }, [updatedTodo]);
 
   const {name, done, text, dueDate, priority } = updatedTodo;
   return (
