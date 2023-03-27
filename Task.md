@@ -44,3 +44,7 @@ Modify create ToDoItem screen to allow user editing existing item. Add edit butt
 - [React Query](https://react-query-v3.tanstack.com/)
 - Eslint
 - test coverage
+
+
+# zod for validations
+# create create-react-form
