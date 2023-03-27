@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
 import Header from "./components/ui/header";
-import AddTask from "./pages/AddTask";
+import {AddTask} from "./pages/AddTask";
 import { TasksList } from "./pages/Tasks";
 
 function App() {

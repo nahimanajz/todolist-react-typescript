@@ -21,3 +21,16 @@ pages order
 modified item will be shown on the list immediately without refresh
 -> Once user clicks on delete icon confirmation popup dialog will be shown up
 
+
+// npm i classname package for checking conditions
+No- need to add on response types on fetch and axios 
+-use  small type fields 
+// suggestee using arrow functions 
+
+//using absolute path
+
+**todo:**
+
+** fetch actual todos from server
+** create new todo
+** work on feedback
