@@ -1,13 +1,6 @@
 {
   "todos": [
     {
-      "id": "6B29FC40-CA47-1067-B31D-00DD010662D3",
-      "done": true,
-      "priority": "Low",
-      "dueDate": "22-03-2023",
-      "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus ex, quidem perspiciatis at minima nihil tempora? Harum autem saepe cum officiis assumenda hic. Quas eaque facilis necessitatibus labore earum tenetur saepe nesciunt!"
-    },
-    {
       "id": "6B29FC11-CA47-1067-B31D-00DD010662D1",
       "done": false,
       "priority": "High",
@@ -19,13 +12,6 @@
       "done": false,
       "priority": "Normal",
       "dueDate": "21-03-2023",
-      "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus ex, quidem perspiciatis at minima nihil tempora? Harum autem saepe cum officiis assumenda hic. Quas eaque facilis necessitatibus labore earum tenetur saepe nesciunt!"
-    },
-    {
-      "id": "6B29FC40-CA47-1067-B31D-04DD010662D3",
-      "done": true,
-      "priority": "Low",
-      "dueDate": "22-03-2023",
       "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus ex, quidem perspiciatis at minima nihil tempora? Harum autem saepe cum officiis assumenda hic. Quas eaque facilis necessitatibus labore earum tenetur saepe nesciunt!"
     },
     {
@@ -41,14 +27,6 @@
       "priority": "Normal",
       "dueDate": "24-03-2023",
       "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus ex, quidem perspiciatis at minima nihil tempora? Harum autem saepe cum officiis assumenda hic. Quas eaque facilis necessitatibus labore earum tenetur saepe nesciunt!"
-    },
-    {
-      "Name": "pm install uuid",
-      "dueDate": "2023-03-25",
-      "done": "0",
-      "priority": "Normal",
-      "text": "pm install uuid",
-      "id": "bJ-YKj9"
     },
     {
       "Name": "application ",
