@@ -17,7 +17,7 @@
         {
             "id":"6B29FC11-CA47-1067-B31D-00DD110662D1", 
             "done": false, 
-            "priority": "Normal",
+            "priority": "Medium",
             "dueDate":"21-03-2023",
             "text":"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus ex, quidem perspiciatis at minima nihil tempora? Harum autem saepe cum officiis assumenda hic. Quas eaque facilis necessitatibus labore earum tenetur saepe nesciunt!"
         },
@@ -38,7 +38,7 @@
             {
                 "id":"6B29FC11-CA47-1067-B31D-01DD010662D1", 
                 "done": false, 
-                "priority": "Normal",
+                "priority": "Medium",
                 "dueDate":"24-03-2023",
                 "text":"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus ex, quidem perspiciatis at minima nihil tempora? Harum autem saepe cum officiis assumenda hic. Quas eaque facilis necessitatibus labore earum tenetur saepe nesciunt!"
             }
