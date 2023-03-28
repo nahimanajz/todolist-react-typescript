@@ -1,57 +1,49 @@
 import { Todo } from "@/models/Todo";
-import { SERVER_URL } from "../../utils";
+
 import { PencilSquareIcon } from "@heroicons/react/24/solid";
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { updateTodo } from "services/todo_service";
+import { useForm } from "react-hook-form";
+import { SubmitHandler } from "react-hook-form/dist/types";
+
 interface EditTodoProps {
   todo: Todo;
-//  handleUpdate: Function,
 }
-//{ todo }: { todo: Todo }
 
 export const EditTodo = ({ todo }: EditTodoProps) => {
   const [showModal, setShowModal] = useState(false);
-  const [updatedTodo, setUpdatedTodo] = useState(todo);
-  const[loading, setLoading] = useState<Boolean>(false);
-  const navigate = useNavigate()
+  const [loading, setLoading] = useState<Boolean>(false);
+  const { id, name, done, text, dueDate, priority } = todo;
 
-  const setTaskField = (e: {
-    target: { name: string; value: string | number | boolean };
-  }) => {
-    setUpdatedTodo({ ...updatedTodo, [e.target.name]: e.target.value });
-  };
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm<Todo>({
+    defaultValues: { id, name, done, text, dueDate, priority },
+  });
 
-  const handleUpdate = async (event: { preventDefault: () => void }) => {
-    event.preventDefault();
-
+  const handleUpdate: SubmitHandler<Todo> = (todo: Todo) => {
+    setLoading(true);
+    try {
+      updateTodo(todo);
+      setLoading(false);
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+      setLoading(false);
+    }
     setShowModal(false);
-      setLoading(true);
-
-      try {
-        const response = await fetch(`${SERVER_URL}/${todo.id}`, {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(updatedTodo),
-        });
-        if (!response.ok) {
-          throw new Error(`HTTP error${response.status}`);
-        }
-        setLoading(false);
-        navigate("/");
-      } catch (err) {
-        console.log(err)
-        setLoading(false);
-      }
   };
-
-  const {name, done, text, dueDate, priority } = updatedTodo;
+  const minDate = Date.now()
   return (
     <>
       <PencilSquareIcon
         className="h-6 w-6 text-yellow-500 mr-6"
-        onClick={() => setShowModal(true)}
+        onClick={() => {
+          setShowModal(true);
+          console.log(todo);
+        }}
       />
       {showModal ? (
         <>
@@ -63,136 +55,142 @@ export const EditTodo = ({ todo }: EditTodoProps) => {
                 <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
                   <h3 className="text-3xl font-semibold">Edit Task</h3>
                   <button
-                    className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
                     onClick={() => setShowModal(false)}
+                    type="button"
+                    className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                    data-modal-hide="defaultModal"
                   >
-                    <span className="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
-                      ×
-                    </span>
+                    <svg
+                      aria-hidden="true"
+                      className="w-5 h-5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                        clip-rule="evenodd"
+                      ></path>
+                    </svg>
+                    <span className="sr-only">Close modal</span>
                   </button>
                 </div>
                 {/*body*/}
-                <div className="relative px-12 flex-auto w-96">
-                  <div className="space-y-6">
-                    <div className="col-span-6 sm:col-span-3">
-                      <label
-                        htmlFor="name"
-                        className="block text-sm font-medium text-gray-700"
-                      >
-                        Name
-                      </label>
-                      <input
-                        name="name"
-                        value={name}
-                        onChange={setTaskField}
-                        className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                      />
-                    </div>
+                <form onSubmit={handleSubmit(handleUpdate)}>
+                  <div className="relative px-12 flex-auto w-96">
+                    <div className="space-y-6">
+                      <div className="col-span-6 sm:col-span-3">
+                        <label
+                          htmlFor="name"
+                          className="block text-sm font-medium text-gray-700"
+                        >
+                          Name
+                        </label>
 
-                    <div className="col-span-6 sm:col-span-3">
-                      <label
-                        htmlFor="dueDate"
-                        className="block text-sm font-medium text-gray-700"
-                      >
-                        Due Date
-                      </label>
-                      <input
-                        type="date"
-                        name="dueDate"
-                        value={dueDate.toString()}
-                        onChange={setTaskField}
-                        className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                      />
-                    </div>
-                    <div className="flex col-span-6 sm:col-span-3">
-                      <label
-                        htmlFor="done"
-                        className="block text-sm font-medium text-gray-700 mr-3"
-                      >
-                        Done
-                      </label>
-                      <div className="flex items-center mb-4">
                         <input
-                          id="default-radio-1"
-                          type="radio"
-                          value={`${done}`}
-                          name="done"
-                          onChange={setTaskField}
-                          className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:border-gray-600"
+                          {...register("name", { required: true })}
+                          className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                         />
-                        <label
-                          htmlFor="default-radio-1"
-                          className="ml-2 block text-sm font-medium text-gray-700"
-                        >
-                          Yes
-                        </label>
+                        <small className="text-red-700 font-medium">
+                          {errors.name && "Name is required"}
+                        </small>
                       </div>
-                      <div className="flex items-center ml-3 mb-3">
+                      <div className="col-span-6 sm:col-span-3">
+                        <label
+                          htmlFor="dueDate"
+                          className="block text-sm font-medium text-gray-700"
+                        >
+                          Due Date
+                        </label>
                         <input
-                          id="default-radio-2"
-                          type="radio"
-                          value={`${done}`}
-                          onChange={setTaskField}
-                          name="done"
-                          className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:border-gray-600"
+                          type="date"
+                          min={minDate.toString().slice(0, 10)} max="2030-12-31"
+                          value={dueDate?.toString()}
+                          {...register("dueDate", { required: true })}
+                          className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                         />
-                        <label
-                          htmlFor="default-radio-2"
-                          className="ml-2 block text-sm font-medium text-gray-700"
-                        >
-                          Not Yet
-                        </label>
+                        <small className=" text-red-700 font-medium">
+                          {errors.dueDate && "Due Date is required"}
+                        </small>
                       </div>
-                    </div>
-                    <div className="col-span-6 sm:col-span-3">
-                      <label
-                        htmlFor="priority"
-                        className="block text-sm font-medium text-gray-700"
-                      >
-                        Priority
-                      </label>
-                      <select
-                        id="priority"
-                        name="priority"
-                        onChange={setTaskField}
-                        value={`${priority}`}
-                        autoComplete="priority"
-                        className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                      >
-                        <option>High</option>
-                        <option>Normal</option>
-                        <option>Low</option>
-                      </select>
-                    </div>
-                    <div className="col-span-6 sm:col-span-3">
-                      <label
-                        htmlFor="message"
-                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                      >
-                        text
-                      </label>
-                      <textarea
-                        id="message"
-                        rows={4}
-                        value={text}
-                        onChange={setTaskField}
-                        name="text"
-                        className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-900 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="Write your thoughts here..."
-                      ></textarea>
+                      
+                      <div className="flex col-span-6 sm:col-span-3">
+                        <label
+                          htmlFor="done"
+                          className="block text-sm font-medium text-gray-700 mr-3"
+                        >
+                          Done?
+                        </label>
+                        <div className="flex items-center mb-4">
+                          <input
+                            id="default-radio-1"
+                            type="radio"
+                            checked={done}
+                            defaultValue={`${done}`}
+                            {...register("done")}
+                            
+                            className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:border-gray-600"
+                          />
+                          <label
+                            htmlFor="default-radio-1"
+                            className="ml-2 block text-sm font-medium text-gray-700"
+                          >
+                            Mark as complete
+                          </label>
+                        </div>
+                      </div>
+                      <div className="col-span-6 sm:col-span-3">
+                        <label
+                          htmlFor="priority"
+                          className="block text-sm font-medium text-gray-700"
+                        >
+                          Priority
+                        </label>
+                        <select
+                          id="priority"
+                          {...register("priority", { required: true })}
+                          value={`${priority}`}
+                          autoComplete="priority"
+                          className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                        >
+                          <option>High</option>
+                          <option>Medium</option>
+                          <option>Low</option>
+                        </select>
+                      </div>
+                      <div className="col-span-6 sm:col-span-3">
+                        <label
+                          htmlFor="message"
+                          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                        >
+                          Text
+                        </label>
+                        <textarea
+                          id="message"
+                          rows={4}
+                          {...register("text", { required: true })}
+                          className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-900 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                          placeholder="Write your thoughts here..."
+                        ></textarea>
+                        <small className=" text-red-700 font-medium">
+                          {errors.text && "Text is required"}
+                        </small>
+                      </div>
+                      
                     </div>
                   </div>
-                </div>
 
-                {/*footer*/}
 
-                <button
-                  className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                  type="button"
-                  onClick={handleUpdate}
-                >
-                  Save Changes
-                </button>
+                  <div className="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b  border-b border-solid border-slate-200 mt-10">
+                    <button
+                      className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                      type="submit"
+                    >
+                      Update
+                    </button>
+                  </div>
+                </form>
               </div>
             </div>
           </div>

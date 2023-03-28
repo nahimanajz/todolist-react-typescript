@@ -5,6 +5,6 @@ export interface Todo{
     name: string,
     text: string,
     dueDate: Date,
-    priority:"High"| "Low" | "Normal",
+    priority:"High"| "Medium" | "Low",
     done: boolean,
 }
