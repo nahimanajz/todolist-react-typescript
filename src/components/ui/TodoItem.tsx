@@ -11,7 +11,7 @@ import { EditTodo } from "../form/EditTodo";
 const TaskItem = ({ todo, deleteTodo }: { todo: Todo, deleteTodo:Function }): ReactElement => {
   const { id, name, done, text, dueDate, priority } = todo;
 
-  const handleDeleteTodo = async (id: string) => {
+  const handleDeleteTodo = (id: string) => {
     deleteTodo(id)
   };
 

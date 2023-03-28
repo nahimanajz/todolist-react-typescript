@@ -20,7 +20,6 @@ export const TasksList: FC = (): ReactElement => {
     } catch (err) {
       setError(`${err}`);
       console.log(err);
-      
       setLoading(false);
     }
   };
@@ -32,6 +31,7 @@ export const TasksList: FC = (): ReactElement => {
       if (!response.ok) {
         throw new Error(`HTTP error${response.status}`);
       }
+  
     } catch (err) {
       console.log("something went wrong", err);
     }
@@ -40,6 +40,7 @@ export const TasksList: FC = (): ReactElement => {
   useEffect(() => {
     fetchTodos();
   }, [loading, error]);
+   //TODO: Ask how I can implement auto-reload later on deleting an item as well as upaing item
 
   return (
     <>
