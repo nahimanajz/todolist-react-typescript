@@ -1,4 +1,4 @@
-import { FC, ReactElement, useEffect, useState } from "react";
+import { FC, ReactElement, useEffect, useId, useState } from "react";
 import { Todo } from "@/models/Todo";
 import { SERVER_URL } from "../../utils"; // TODO: replace with absolute path
 import TodoItem from "../../components/ui/TodoItem";
@@ -40,7 +40,7 @@ export const TasksList: FC = (): ReactElement => {
   useEffect(() => {
     fetchTodos();
   }, [loading, error]);
-   //TODO: Ask how I can implement auto-reload later on deleting an item as well as upaing item
+
 
   return (
     <>
@@ -52,7 +52,7 @@ export const TasksList: FC = (): ReactElement => {
           <div className="text-red-500">Something went wrong</div>
         ) : (
           todos &&
-          todos.map((todo) =><TodoItem todo={todo} deleteTodo={deleteTodo}/>)
+          todos.map((todo) =><TodoItem todo={todo} deleteTodo={deleteTodo} key={useId()}/>)
         )}
       </div>
     </>

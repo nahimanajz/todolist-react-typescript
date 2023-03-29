@@ -1,0 +1,136 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test whole app App Should mount without problem 1`] = `
+<Fragment>
+  <div
+    className="flex h-screen"
+  >
+    <div
+      className="w-1/5 bg-blue-600 text-white text-center font-extrabold"
+    >
+      Productivity Tracker
+    </div>
+    <div
+      className="w-4/5 flex justify-center"
+    >
+      <div
+        className="flex flex-col"
+      >
+        <div
+          className=" h-1/6"
+        >
+          <nav
+            className="flex sm:justify-center space-x-4"
+          >
+            <a
+              className="rounded-lg px-3 py-2 text-slate-700 font-medium hover:bg-slate-100 hover:text-slate-900"
+              href="/"
+            >
+              Home
+            </a>
+            <a
+              className="rounded-lg px-3 py-2 text-slate-700 font-medium hover:bg-slate-100 hover:text-slate-900"
+              href="/add"
+            >
+              Add
+            </a>
+          </nav>
+        </div>
+        <div
+          className=" px-10 py-2"
+        >
+          <RouterProvider
+            router={
+              Object {
+                "_internalActiveDeferreds": Map {},
+                "_internalFetchControllers": Map {},
+                "_internalSetRoutes": [Function],
+                "basename": undefined,
+                "createHref": [Function],
+                "deleteBlocker": [Function],
+                "deleteFetcher": [Function],
+                "dispose": [Function],
+                "enableScrollRestoration": [Function],
+                "encodeLocation": [Function],
+                "fetch": [Function],
+                "getBlocker": [Function],
+                "getFetcher": [Function],
+                "initialize": [Function],
+                "navigate": [Function],
+                "revalidate": [Function],
+                "routes": Array [
+                  Object {
+                    "children": undefined,
+                    "element": <TasksList />,
+                    "hasErrorBoundary": false,
+                    "id": "0",
+                    "path": "/",
+                  },
+                  Object {
+                    "children": undefined,
+                    "element": <AddTask />,
+                    "hasErrorBoundary": false,
+                    "id": "1",
+                    "path": "/add",
+                  },
+                  Object {
+                    "children": undefined,
+                    "element": <div>
+                      Todo Detail
+                    </div>,
+                    "hasErrorBoundary": false,
+                    "id": "2",
+                    "path": "/detail/:id",
+                  },
+                ],
+                "state": Object {
+                  "actionData": null,
+                  "blockers": Map {},
+                  "errors": null,
+                  "fetchers": Map {},
+                  "historyAction": "POP",
+                  "initialized": true,
+                  "loaderData": Object {},
+                  "location": Object {
+                    "hash": "",
+                    "key": "default",
+                    "pathname": "/",
+                    "search": "",
+                    "state": null,
+                  },
+                  "matches": Array [
+                    Object {
+                      "params": Object {},
+                      "pathname": "/",
+                      "pathnameBase": "/",
+                      "route": Object {
+                        "children": undefined,
+                        "element": <TasksList />,
+                        "hasErrorBoundary": false,
+                        "id": "0",
+                        "path": "/",
+                      },
+                    },
+                  ],
+                  "navigation": Object {
+                    "formAction": undefined,
+                    "formData": undefined,
+                    "formEncType": undefined,
+                    "formMethod": undefined,
+                    "location": undefined,
+                    "state": "idle",
+                  },
+                  "preventScrollReset": false,
+                  "restoreScrollPosition": null,
+                  "revalidation": "idle",
+                },
+                "subscribe": [Function],
+              }
+            }
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</Fragment>
+`;

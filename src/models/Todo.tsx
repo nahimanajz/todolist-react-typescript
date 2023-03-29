@@ -5,6 +5,11 @@ export interface Todo{
     name: string,
     text: string,
     dueDate: Date,
-    priority:"High"| "Medium" | "Low",
+    priority:Priority,
     done: boolean,
+}
+export enum  Priority{
+  High="High",
+  Medium="Medium",
+  Low="Low"
 }
