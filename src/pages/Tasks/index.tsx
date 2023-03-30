@@ -52,7 +52,7 @@ export const TasksList: FC = (): ReactElement => {
           <div className="text-red-500">Something went wrong</div>
         ) : (
           todos &&
-          todos.map((todo) =><TodoItem todo={todo} deleteTodo={deleteTodo} key={useId()}/>)
+          todos.map((todo) =><TodoItem todo={todo} deleteTodo={deleteTodo}/>)
         )}
       </div>
     </>

@@ -5,7 +5,7 @@ import {
   NoSymbolIcon,
   TrashIcon,
 } from "@heroicons/react/24/solid";
-import { ReactElement } from "react";
+import { ReactElement, useId } from "react";
 import { EditTodo } from "../form/EditTodo";
 
 const TaskItem = ({ todo, deleteTodo }: { todo: Todo, deleteTodo:Function }): ReactElement => {
@@ -18,7 +18,7 @@ const TaskItem = ({ todo, deleteTodo }: { todo: Todo, deleteTodo:Function }): Re
   return (
     <div
       className="bg-white rounded-lg px-6 py-8 ring-1 ring-slate-900/5 shadow-xl"
-      key={id}
+      key={useId()}
     >
       <div className="flex justify-between">
         <h1 className="text-slate-500 dark:text-slate-700 font-bold">{name}</h1>

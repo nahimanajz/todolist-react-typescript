@@ -1,5 +1,5 @@
-import { Todo } from "@/models/Todo";
-import { FC, ReactElement, useState } from "react";
+import { Priority, Todo } from "models/Todo";
+import { FC, ReactElement} from "react";
 import { v4 as uuidv4 } from "uuid";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -29,7 +29,7 @@ export const AddTask: FC = (): ReactElement => {
     defaultValues: {
       id: uuidv4(),
       name: "",
-      priority: "Low",
+      priority: Priority.Low,
       dueDate: new Date(),
       done: false,
       text: ""
