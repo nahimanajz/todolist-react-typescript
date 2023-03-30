@@ -45,9 +45,9 @@ export const TasksList: FC = (): ReactElement => {
   return (
     <>
       <div className="grid grid-cols-3 gap-4">
-        {!todos.length && (
+        {!todos.length? (
           <div className="text-red-500">No tasks added yet</div>
-        )}
+        ): null}
         {error ? (
           <div className="text-red-500">Something went wrong</div>
         ) : (

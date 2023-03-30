@@ -101,6 +101,13 @@
       "dueDate": "2023-03-29",
       "priority": "Medium",
       "text": "I find out how to get a boolean from a radio input in RHF."
+    },
+    {
+      "id": "fd4dbc26-8638-4b5b-8dd5-09cfa3f4da4f",
+      "name": "Enum",
+      "dueDate": "2023-03-29T00:00:00.000Z",
+      "priority": "Medium",
+      "text": "enum is here"
     }
   ]
 }

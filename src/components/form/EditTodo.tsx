@@ -125,7 +125,7 @@ export const EditTodo = ({ todo }: EditTodoProps) => {
                         <div className="flex items-center mb-4">
                           <input
                             id="default-radio-1"
-                            type="radio"
+                            type="checkbox"
                             checked={done}
                             defaultValue={`${done}`}
                             {...register("done")}
