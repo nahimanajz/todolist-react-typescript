@@ -1,4 +1,4 @@
-import { FC, ReactElement} from "react";
+import { FC, } from "react";
 import { Todo } from "@/models/Todo";
 import TodoItem from "../../components/ui/TodoItem";
 
@@ -10,7 +10,7 @@ import { fetchTodo } from "services/todo_service";
 
 
 
-export const TasksList: FC = (): ReactElement => {
+export const TasksList: FC = () => {
 const {isLoading, error, data} = useQuery<Todo[], Error>({
   queryKey:["todos"],
   queryFn: fetchTodo
@@ -26,7 +26,7 @@ const {isLoading, error, data} = useQuery<Todo[], Error>({
           <div className="text-red-500">No tasks added yet</div>
         ): null}
       
-          {data?.map((todo) =><TodoItem todo={todo}/>)}
+          {data?.map((todo,index) =><TodoItem todo={todo} key={index}/>)}
           
       </div>
     </>

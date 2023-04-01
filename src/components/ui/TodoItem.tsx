@@ -1,17 +1,16 @@
-import { Todo } from "@/models/Todo";
+import { Todo } from "models/Todo";
 
 import {
   CheckCircleIcon,
   NoSymbolIcon,
   TrashIcon,
 } from "@heroicons/react/24/solid";
-import { ReactElement, useId } from "react";
 import { EditTodo } from "../form/EditTodo";
 import { QueryClient, useMutation } from "@tanstack/react-query";
 import { deleteItem } from "services/todo_service";
 
 
-const TaskItem = ({ todo }: { todo: Todo }): ReactElement => {
+const TaskItem = ({ todo }: { todo: Todo }) => {
   const { id, name, done, text, dueDate, priority } = todo;
 
   const queryClient = new QueryClient();
@@ -30,9 +29,7 @@ const TaskItem = ({ todo }: { todo: Todo }): ReactElement => {
   return (
     <>
       <div
-        className="bg-white rounded-lg px-6 py-8 ring-1 ring-slate-900/5 shadow-xl"
-        key={useId()}
-      >
+        className="bg-white rounded-lg px-6 py-8 ring-1 ring-slate-900/5 shadow-xl">
       
         <div className="flex justify-between">
           <h1 className="text-slate-500 dark:text-slate-700 font-bold">

@@ -1,23 +1,14 @@
 import { Priority, Todo } from "models/Todo";
-import { FC, ReactElement} from "react";
+import { FC } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { SubmitHandler } from "react-hook-form/dist/types";
 import { zodResolver } from '@hookform/resolvers/zod';
-import * as z from "zod";
 import { createTodo } from "services/todo_service";
+import { DataSchema } from "utils/validations";
 
-
-const DataSchema = z.object({
-  id: z.string(),
-  name: z.string().min(3, {message: "Name is required"}),
-  dueDate: z.coerce.date(),
-  priority: z.enum(["Low", "Medium", "High"]),
-  text: z.string().min(10, { message: "Please enter at least 5 characters" }).max(300, { message: "Characters exceed 300" }).optional()
-})
-
-export const AddTask: FC = (): ReactElement => {
+export const AddTask: FC = () => {
   const navigate = useNavigate();
 
   const {
@@ -65,7 +56,7 @@ export const AddTask: FC = (): ReactElement => {
               className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             />
             <small className=" text-red-700 font-medium">
-              {" "}
+
               {errors.name?.message }
             </small>
           </div>

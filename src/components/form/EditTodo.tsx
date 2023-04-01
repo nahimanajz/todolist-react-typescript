@@ -1,4 +1,4 @@
-import { Todo } from "@/models/Todo";
+import { Priority, Todo } from "models/Todo";
 
 import { PencilSquareIcon } from "@heroicons/react/24/solid";
 import { useState } from "react";
@@ -6,6 +6,8 @@ import { updateTodo } from "services/todo_service";
 import { useForm } from "react-hook-form";
 import { SubmitHandler } from "react-hook-form/dist/types";
 import { QueryClient, useMutation } from "@tanstack/react-query";
+import { DataSchema } from "utils/validations";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 interface EditTodoProps {
   todo: Todo;
@@ -21,13 +23,14 @@ export const EditTodo = ({ todo }: EditTodoProps) => {
     formState: { errors },
     handleSubmit,
   } = useForm<Todo>({
+    resolver: zodResolver(DataSchema),
     defaultValues: { id, name, done, text, dueDate, priority },
   });
 
-  
+
   const queryClient = new QueryClient();
-  const {mutate: updateTodoItem} = useMutation((todo:Todo)=> updateTodo(todo), {
-    onSuccess: ()=> {
+  const { mutate: updateTodoItem } = useMutation((todo: Todo) => updateTodo(todo), {
+    onSuccess: () => {
       queryClient.invalidateQueries(["todos"]);
       alert("updated")
     }
@@ -38,7 +41,7 @@ export const EditTodo = ({ todo }: EditTodoProps) => {
     setShowModal(false);
   };
 
-  const minDate = Date.now()
+
   return (
     <>
       <PencilSquareIcon
@@ -71,9 +74,9 @@ export const EditTodo = ({ todo }: EditTodoProps) => {
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        fill-rule="evenodd"
+                        fillRule="evenodd"
                         d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                        clip-rule="evenodd"
+                        clipRule="evenodd"
                       ></path>
                     </svg>
                     <span className="sr-only">Close modal</span>
@@ -108,16 +111,15 @@ export const EditTodo = ({ todo }: EditTodoProps) => {
                         </label>
                         <input
                           type="date"
-                          min={minDate.toString().slice(0, 10)} max="2030-12-31"
                           value={dueDate?.toString()}
                           {...register("dueDate", { required: true })}
                           className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                         />
                         <small className=" text-red-700 font-medium">
-                          {errors.dueDate && "Due Date is required"}
+                          {errors.dueDate?.message}
                         </small>
                       </div>
-                      
+
                       <div className="flex col-span-6 sm:col-span-3">
                         <label
                           htmlFor="done"
@@ -132,7 +134,6 @@ export const EditTodo = ({ todo }: EditTodoProps) => {
                             checked={done}
                             defaultValue={`${done}`}
                             {...register("done")}
-                            
                             className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:border-gray-600"
                           />
                           <label
@@ -153,13 +154,11 @@ export const EditTodo = ({ todo }: EditTodoProps) => {
                         <select
                           id="priority"
                           {...register("priority", { required: true })}
-                          value={`${priority}`}
                           autoComplete="priority"
                           className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                         >
-                          <option>High</option>
-                          <option>Medium</option>
-                          <option>Low</option>
+                          {(Object.keys(Priority)).map((key, index) => <option value={key} key={index}> {key} </option>)}
+
                         </select>
                       </div>
                       <div className="col-span-6 sm:col-span-3">
@@ -180,7 +179,7 @@ export const EditTodo = ({ todo }: EditTodoProps) => {
                           {errors.text && "Text is required"}
                         </small>
                       </div>
-                      
+
                     </div>
                   </div>
 
