@@ -1,11 +1,10 @@
 {
   "todos": [
     {
-      "name": "application ",
       "id": "6B29FC11-CA47-1067-B31D-00DD010662D1",
-      "done": false,
+      "name": "application 1",
+      "dueDate": "2023-04-10T00:00:00.000Z",
       "priority": "Medium",
-      "dueDate": "21-03-2023",
       "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus ex, quidem perspiciatis at minima nihil tempora? Harum autem saepe cum officiis assumenda hic. Quas eaque facilis necessitatibus labore earum tenetur saepe nesciunt!"
     },
     {
@@ -26,18 +25,9 @@
     {
       "id": "r8r11vY",
       "name": "application ",
-      "done": "1",
-      "text": "North America",
-      "dueDate": "2023-03-22",
-      "priority": "Low"
-    },
-    {
-      "name": "some name",
-      "dueDate": "2023-03-25",
+      "dueDate": "2023-03-27T00:00:00.000Z",
       "priority": "Medium",
-      "done": "0",
-      "text": "make a move",
-      "id": "cUXWt6J"
+      "text": "North America"
     },
     {
       "name": "NEW ONE",
@@ -49,10 +39,9 @@
     },
     {
       "id": "46675573-41d4-4ac0-8215-5c17de80da00",
-      "name": "some name",
-      "dueDate": "2023-03-29",
-      "done": "0",
-      "priority": "High",
+      "name": "vtr",
+      "dueDate": "2023-03-29T00:00:00.000Z",
+      "priority": "Low",
       "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus ex, quidem perspiciatis at minima nihil tempora? Harum autem saepe cum officiis assumenda hic. Quas eaque facilis necessitatibus labore earum tenetur saepe nesciunt!"
     },
     {

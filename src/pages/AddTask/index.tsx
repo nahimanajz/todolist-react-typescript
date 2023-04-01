@@ -33,7 +33,7 @@ export const AddTask: FC = () => {
       createTodo(data)
       navigate("/")
     } catch (err) {
-      console.log(err);
+
     }
   };
 

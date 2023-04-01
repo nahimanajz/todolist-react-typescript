@@ -1,10 +1,12 @@
 import { Todo } from "models/Todo";
 import { SERVER_URL } from "utils";
 
-export const fetchTodo =async () => {
-  const response = await  fetch(SERVER_URL)
-  return response.json() 
- }
+export const fetchTodo = async <TResponse>(): Promise<TResponse> => {
+  return await fetch(SERVER_URL).then(response => response.json())
+    .then(data => data as TResponse)
+    .catch(err => err);
+
+}
 
 export const createTodo = async <TResponse>(data: Todo): Promise<TResponse> => {
   return await fetch(SERVER_URL, routeConfig("POST", data))
@@ -12,11 +14,12 @@ export const createTodo = async <TResponse>(data: Todo): Promise<TResponse> => {
     .then(data => data as TResponse).catch(err => err)
 
 }
-export const deleteItem = async(id: string) => {
-  const response = await fetch(`${SERVER_URL}/${id}`, {
+export const deleteItem = async<TResponse>(id: string): Promise<TResponse> => {
+  return await fetch(`${SERVER_URL}/${id}`, {
     method: "DELETE",
-  });
-  return response.json()
+  }).then(response => response.json())
+    .then(data => data as TResponse)
+    .catch(err => err);
 }
 
 export const updateTodo = async <TResponse>(todo: Todo): Promise<TResponse> => {

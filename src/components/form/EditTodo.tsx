@@ -48,7 +48,6 @@ export const EditTodo = ({ todo }: EditTodoProps) => {
         className="h-6 w-6 text-yellow-500 mr-6"
         onClick={() => {
           setShowModal(true);
-          console.log(todo);
         }}
       />
       {showModal ? (
@@ -111,7 +110,6 @@ export const EditTodo = ({ todo }: EditTodoProps) => {
                         </label>
                         <input
                           type="date"
-                          value={dueDate?.toString()}
                           {...register("dueDate", { required: true })}
                           className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                         />
