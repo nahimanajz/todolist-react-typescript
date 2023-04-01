@@ -5,6 +5,7 @@ import { useState } from "react";
 import { updateTodo } from "services/todo_service";
 import { useForm } from "react-hook-form";
 import { SubmitHandler } from "react-hook-form/dist/types";
+import { QueryClient, useMutation } from "@tanstack/react-query";
 
 interface EditTodoProps {
   todo: Todo;
@@ -12,7 +13,7 @@ interface EditTodoProps {
 
 export const EditTodo = ({ todo }: EditTodoProps) => {
   const [showModal, setShowModal] = useState(false);
-  const [loading, setLoading] = useState<Boolean>(false);
+
   const { id, name, done, text, dueDate, priority } = todo;
 
   const {
@@ -23,18 +24,20 @@ export const EditTodo = ({ todo }: EditTodoProps) => {
     defaultValues: { id, name, done, text, dueDate, priority },
   });
 
-  const handleUpdate: SubmitHandler<Todo> = (todo: Todo) => {
-    setLoading(true);
-    try {
-      updateTodo(todo);
-      setLoading(false);
-      window.location.reload();
-    } catch (err) {
-      console.log(err);
-      setLoading(false);
+  
+  const queryClient = new QueryClient();
+  const {mutate: updateTodoItem} = useMutation((todo:Todo)=> updateTodo(todo), {
+    onSuccess: ()=> {
+      queryClient.invalidateQueries(["todos"]);
+      alert("updated")
     }
+  });
+
+  const handleUpdate: SubmitHandler<Todo> = (todo: Todo) => {
+    updateTodoItem(todo);
     setShowModal(false);
   };
+
   const minDate = Date.now()
   return (
     <>
@@ -125,7 +128,7 @@ export const EditTodo = ({ todo }: EditTodoProps) => {
                         <div className="flex items-center mb-4">
                           <input
                             id="default-radio-1"
-                            type="radio"
+                            type="checkbox"
                             checked={done}
                             defaultValue={`${done}`}
                             {...register("done")}

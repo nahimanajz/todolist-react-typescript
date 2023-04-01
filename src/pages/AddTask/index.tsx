@@ -1,5 +1,5 @@
-import { Todo } from "@/models/Todo";
-import { FC, ReactElement, useState } from "react";
+import { Priority, Todo } from "models/Todo";
+import { FC, ReactElement} from "react";
 import { v4 as uuidv4 } from "uuid";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -11,8 +11,8 @@ import { createTodo } from "services/todo_service";
 
 const DataSchema = z.object({
   id: z.string(),
-  name: z.string(),
-  dueDate: z.string(),
+  name: z.string().min(3, {message: "Name is required"}),
+  dueDate: z.coerce.date(),
   priority: z.enum(["Low", "Medium", "High"]),
   text: z.string().min(10, { message: "Please enter at least 5 characters" }).max(300, { message: "Characters exceed 300" }).optional()
 })
@@ -29,7 +29,7 @@ export const AddTask: FC = (): ReactElement => {
     defaultValues: {
       id: uuidv4(),
       name: "",
-      priority: "Low",
+      priority: Priority.Low,
       dueDate: new Date(),
       done: false,
       text: ""
@@ -106,9 +106,7 @@ export const AddTask: FC = (): ReactElement => {
               autoComplete="priority"
               className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             >
-              <option>High</option>
-              <option>Medium</option>
-              <option>Low</option>
+             {(Object.keys(Priority)).map( (key, index) => <option value={key} key={index}> {key} </option> )}
             </select>
             <small className=" text-red-700 font-medium">
               {" "}

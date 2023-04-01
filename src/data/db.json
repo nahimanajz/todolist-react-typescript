@@ -27,7 +27,7 @@
       "id": "r8r11vY",
       "name": "application ",
       "done": "1",
-      "text": "America",
+      "text": "North America",
       "dueDate": "2023-03-22",
       "priority": "Low"
     },
@@ -40,36 +40,12 @@
       "id": "cUXWt6J"
     },
     {
-      "name": "das",
-      "dueDate": "2023-03-29",
-      "done": "1",
-      "priority": "High",
-      "text": "asd",
-      "id": "uaL7q97"
-    },
-    {
       "name": "NEW ONE",
       "dueDate": "2023-03-29",
       "done": "1",
       "priority": "Medium",
       "text": "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the",
       "id": "c22ffb66-8300-4a55-8961-1adcdd3da08d"
-    },
-    {
-      "id": "df4f3783-d21b-4351-b322-9340128f3020",
-      "name": "Umuzigo",
-      "dueDate": "2023-03-29",
-      "done": "0",
-      "priority": "Low",
-      "text": "djlasdjlaksdjklalsdjaklsdjlaksdjlkad"
-    },
-    {
-      "id": "34745ab0-be3b-41f1-a7ba-8f2032f3c511",
-      "name": "janvier",
-      "dueDate": "2023-03-29",
-      "done": "1",
-      "priority": "High",
-      "text": "the amazing thingdasda"
     },
     {
       "id": "46675573-41d4-4ac0-8215-5c17de80da00",
@@ -86,21 +62,6 @@
       "done": "0",
       "priority": "Low",
       "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus ex, quidem perspiciatis at minima nihil tempora? Harum autem saepe cum officiis assumenda hic. Quas eaque facilis necessitatibus labore earum tenetur saepe nesciunt!"
-    },
-    {
-      "id": "d39a0cc2-bd2d-4674-a819-598fc5a3b1f0",
-      "name": "put here",
-      "dueDate": "2023-03-29",
-      "done": "0",
-      "priority": "High",
-      "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus ex, quidem perspiciatis at minima nihil tempora? Harum autem saepe cum officiis assumenda hic. Quas eaque facilis necessitatibus labore earum tenetur saepe nesciunt!"
-    },
-    {
-      "id": "4831b3fa-02fa-4536-af98-4176c66d32ce",
-      "name": "jz",
-      "dueDate": "2023-03-29",
-      "priority": "Medium",
-      "text": "I find out how to get a boolean from a radio input in RHF."
     }
   ]
 }

@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test whole app App Should mount without problem 1`] = `
+<div
+  className="bg-white rounded-lg px-6 py-8 ring-1 ring-slate-900/5 shadow-xl"
+  key=":r1:"
+>
+  <div
+    className="flex justify-between"
+  >
+    <h1
+      className="text-slate-500 dark:text-slate-700 font-bold"
+    >
+      Tomorrow
+    </h1>
+    <h2
+      className="text-green-500"
+    >
+      Medium
+    </h2>
+    <ForwardRef(NoSymbolIcon)
+      className="h-6 w-6 text-red-500"
+    />
+  </div>
+  <p
+    className="text-slate-500 dark:text-slate-700 mt-2 text-sm mt-10"
+  >
+    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus ex, quidem perspiciatis at minima nihil tempora? Harum autem saepe cum officiis assumenda hic. Quas eaque facilis necessitatibus labore earum tenetur saepe nesciunt!
+  </p>
+  <div
+    className="flex justify-between mt-5 text-slate-900 "
+  >
+    <h1
+      className="text-slate-500 dark:text-slate-700 font-italic"
+    >
+      Thu Mar 30 2023 14:12:05 GMT+0200 (Eastern European Standard Time)
+    </h1>
+    <span
+      className="flex"
+    >
+      <EditTodo
+        todo={
+          Object {
+            "done": false,
+            "dueDate": 2023-03-30T12:12:05.131Z,
+            "id": "2383f2f3-3e85-47ff-b37b-13990178281a",
+            "name": "Tomorrow",
+            "priority": "Medium",
+            "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus ex, quidem perspiciatis at minima nihil tempora? Harum autem saepe cum officiis assumenda hic. Quas eaque facilis necessitatibus labore earum tenetur saepe nesciunt!",
+          }
+        }
+      />
+      <ForwardRef(TrashIcon)
+        className="h-6 w-6 text-red-500"
+        onClick={[Function]}
+      />
+    </span>
+  </div>
+</div>
+`;
