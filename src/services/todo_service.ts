@@ -1,5 +1,6 @@
 import { Todo } from "models/Todo";
-import { SERVER_URL } from "utils";
+//TODO: Ask for using environment
+import { SERVER_URL } from "./index";
 
 export const fetchTodo = async <TResponse>(): Promise<TResponse> => {
   return await fetch(SERVER_URL).then(response => response.json())

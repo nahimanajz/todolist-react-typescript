@@ -2,8 +2,8 @@
   "todos": [
     {
       "id": "6B29FC11-CA47-1067-B31D-00DD010662D1",
-      "name": "application 1",
-      "dueDate": "2023-04-10T00:00:00.000Z",
+      "name": "application 3",
+      "dueDate": "2023-04-03T00:00:00.000Z",
       "priority": "Medium",
       "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus ex, quidem perspiciatis at minima nihil tempora? Harum autem saepe cum officiis assumenda hic. Quas eaque facilis necessitatibus labore earum tenetur saepe nesciunt!"
     },
@@ -24,8 +24,8 @@
     },
     {
       "id": "r8r11vY",
-      "name": "application ",
-      "dueDate": "2023-03-27T00:00:00.000Z",
+      "name": "Application",
+      "dueDate": "2023-03-29T00:00:00.000Z",
       "priority": "Medium",
       "text": "North America"
     },
@@ -69,11 +69,10 @@
     },
     {
       "id": "927c39c9-d91c-47f6-9aa8-5b2e8e57834f",
-      "name": "new amazing things",
-      "done": null,
-      "text": "Should do itju",
-      "dueDate": "2023-04-04",
-      "priority": "High"
+      "name": "It just happens",
+      "dueDate": "2023-04-04T00:00:00.000Z",
+      "priority": "High",
+      "text": "Should do itju"
     },
     {
       "id": "33dc4649-ed45-46cd-8839-b16def4fe94e",

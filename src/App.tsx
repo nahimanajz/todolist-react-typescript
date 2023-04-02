@@ -23,7 +23,7 @@ function App() {
   return (
     <>
       <div className="flex h-screen">
-        <div className="w-1/5 bg-blue-600 text-white text-center font-extrabold">
+        <div className="w-1/5 bg-blue-600 text-white text-center font-extrabold flex-2">
           Productivity Tracker
         </div>
         <div className="w-4/5 flex justify-center">

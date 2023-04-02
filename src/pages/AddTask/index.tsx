@@ -8,6 +8,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { createTodo } from "services/todo_service";
 import { DataSchema } from "utils/validations";
 
+
 export const AddTask: FC = () => {
   const navigate = useNavigate();
 
@@ -33,11 +34,13 @@ export const AddTask: FC = () => {
       createTodo(data)
       navigate("/")
     } catch (err) {
-
+      //TODO: ask Dominique about react toast package
     }
   };
 
   return (
+    <>
+
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="shadow hover:shadow-md w-96 py-6 px-10">
         <div className="space-y-6">
@@ -133,5 +136,7 @@ export const AddTask: FC = () => {
         </div>
       </div>
     </form>
+    </>
+
   );
 };

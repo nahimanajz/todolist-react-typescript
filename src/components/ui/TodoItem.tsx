@@ -29,21 +29,20 @@ const TaskItem = ({ todo }: { todo: Todo }) => {
   return (
     <>
       <div
-        className="bg-white rounded-lg px-6 py-8 ring-1 ring-slate-900/5 shadow-xl">
-      
+        className="bg-white rounded-lg px-6 py-8 ring-1 ring-slate-900/5 shadow-xl flex flex-col justify-around">
+
         <div className="flex justify-between">
           <h1 className="text-slate-500 dark:text-slate-700 font-bold">
             {name}
           </h1>
 
           <h2
-            className={`text-${
-              priority === `High`
+            className={`text-${priority === `High`
                 ? "yellow"
                 : priority === `Low`
-                ? "red"
-                : "green"
-            }-500`}
+                  ? "red"
+                  : "green"
+              }-500`}
           >
             {priority}
           </h2>
@@ -60,9 +59,9 @@ const TaskItem = ({ todo }: { todo: Todo }) => {
 
         <div className="flex justify-between mt-5 text-slate-900 ">
           <h1 className="text-slate-500 dark:text-slate-700 font-italic">
-            {dueDate.toString()}
+            {dueDate.toString().substring(0, 10)}
           </h1>
-          <span className="flex">
+          <span className="flex justify-end">
             <EditTodo todo={todo} />
             <TrashIcon
               className="h-6 w-6 text-red-500"

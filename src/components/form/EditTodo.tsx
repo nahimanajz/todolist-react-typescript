@@ -32,7 +32,7 @@ export const EditTodo = ({ todo }: EditTodoProps) => {
   const { mutate: updateTodoItem } = useMutation((todo: Todo) => updateTodo(todo), {
     onSuccess: () => {
       queryClient.invalidateQueries(["todos"]);
-      alert("updated")
+      //TODO: Implement react Toast 
     }
   });
 
@@ -106,7 +106,7 @@ export const EditTodo = ({ todo }: EditTodoProps) => {
                           htmlFor="dueDate"
                           className="block text-sm font-medium text-gray-700"
                         >
-                          Due Date
+                          Due Date 
                         </label>
                         <input
                           type="date"
@@ -174,7 +174,7 @@ export const EditTodo = ({ todo }: EditTodoProps) => {
                           placeholder="Write your thoughts here..."
                         ></textarea>
                         <small className=" text-red-700 font-medium">
-                          {errors.text && "Text is required"}
+                          {errors.text?.message}
                         </small>
                       </div>
 
