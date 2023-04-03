@@ -8,6 +8,7 @@ import {
 import { EditTodo } from "../form/EditTodo";
 import { QueryClient, useMutation } from "@tanstack/react-query";
 import { deleteItem } from "services/todo_service";
+import { toast } from "react-toastify";
 
 
 const TaskItem = ({ todo }: { todo: Todo }) => {
@@ -17,8 +18,8 @@ const TaskItem = ({ todo }: { todo: Todo }) => {
 
   const { mutate: deleteTodo } = useMutation((id: string) => deleteItem(id), {
     onSuccess: () => {
+      toast.info("Record is deleted")
       queryClient.invalidateQueries(["todos"]);
-      alert("deleted")
     },
   });
 
@@ -38,10 +39,10 @@ const TaskItem = ({ todo }: { todo: Todo }) => {
 
           <h2
             className={`text-${priority === `High`
-                ? "yellow"
-                : priority === `Low`
-                  ? "red"
-                  : "green"
+              ? "yellow"
+              : priority === `Low`
+                ? "red"
+                : "green"
               }-500`}
           >
             {priority}

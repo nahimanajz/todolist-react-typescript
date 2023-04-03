@@ -40,7 +40,7 @@ export const AddTask: FC = () => {
 
   return (
     <>
-
+    
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="shadow hover:shadow-md w-96 py-6 px-10">
         <div className="space-y-6">

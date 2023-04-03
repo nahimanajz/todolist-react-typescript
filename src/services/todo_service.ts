@@ -1,16 +1,17 @@
 import { Todo } from "models/Todo";
-//TODO: Ask for using environment
-import { SERVER_URL } from "./index";
+
+const {REACT_APP_SERVER_URL: SERVER_URL} = process.env
+
 
 export const fetchTodo = async <TResponse>(): Promise<TResponse> => {
-  return await fetch(SERVER_URL).then(response => response.json())
+  return await fetch(`${SERVER_URL}`).then(response => response.json())
     .then(data => data as TResponse)
     .catch(err => err);
 
 }
 
 export const createTodo = async <TResponse>(data: Todo): Promise<TResponse> => {
-  return await fetch(SERVER_URL, routeConfig("POST", data))
+  return await fetch(`${SERVER_URL}`, routeConfig("POST", data))
     .then(response => response.json())
     .then(data => data as TResponse).catch(err => err)
 

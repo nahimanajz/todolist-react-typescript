@@ -8,6 +8,7 @@ import { SubmitHandler } from "react-hook-form/dist/types";
 import { QueryClient, useMutation } from "@tanstack/react-query";
 import { DataSchema } from "utils/validations";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { toast } from "react-toastify";
 
 interface EditTodoProps {
   todo: Todo;
@@ -31,8 +32,9 @@ export const EditTodo = ({ todo }: EditTodoProps) => {
   const queryClient = new QueryClient();
   const { mutate: updateTodoItem } = useMutation((todo: Todo) => updateTodo(todo), {
     onSuccess: () => {
+      toast.success("Record updated ")
       queryClient.invalidateQueries(["todos"]);
-      //TODO: Implement react Toast 
+    
     }
   });
 
