@@ -43,7 +43,6 @@ export const EditTodo = ({ todo }: EditTodoProps) => {
     setShowModal(false);
   };
 
-
   return (
     <>
       <PencilSquareIcon

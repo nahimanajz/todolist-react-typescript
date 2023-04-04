@@ -1,0 +1,67 @@
+{
+  "todos": [
+    {
+      "name": "application ",
+      "id": "6B29FC11-CA47-1067-B31D-00DD010662D1",
+      "done": false,
+      "priority": "Medium",
+      "dueDate": "21-03-2023",
+      "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus ex, quidem perspiciatis at minima nihil tempora? Harum autem saepe cum officiis assumenda hic. Quas eaque facilis necessitatibus labore earum tenetur saepe nesciunt!"
+    },
+    {
+      "id": "6B29FC11-CA47-1067-B31D-02DD010662D1",
+      "done": false,
+      "priority": "High",
+      "dueDate": "23-03-2023",
+      "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus ex, quidem perspiciatis at minima nihil tempora? Harum autem saepe cum officiis assumenda hic. Quas eaque facilis necessitatibus labore earum tenetur saepe nesciunt!",
+      "name": "some name"
+    },
+    {
+      "id": "6B29FC11-CA47-1067-B31D-01DD010662D1",
+      "done": false,
+      "priority": "Medium",
+      "dueDate": "24-03-2023",
+      "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus ex, quidem perspiciatis at minima nihil tempora? Harum autem saepe cum officiis assumenda hic. Quas eaque facilis necessitatibus labore earum tenetur saepe nesciunt!"
+    },
+    {
+      "id": "r8r11vY",
+      "name": "application ",
+      "done": "1",
+      "text": "North America",
+      "dueDate": "2023-03-22",
+      "priority": "Low"
+    },
+    {
+      "name": "some name",
+      "dueDate": "2023-03-25",
+      "priority": "Medium",
+      "done": "0",
+      "text": "make a move",
+      "id": "cUXWt6J"
+    },
+    {
+      "name": "NEW ONE",
+      "dueDate": "2023-03-29",
+      "done": "1",
+      "priority": "Medium",
+      "text": "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the",
+      "id": "c22ffb66-8300-4a55-8961-1adcdd3da08d"
+    },
+    {
+      "id": "46675573-41d4-4ac0-8215-5c17de80da00",
+      "name": "some name",
+      "dueDate": "2023-03-29",
+      "done": "0",
+      "priority": "High",
+      "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus ex, quidem perspiciatis at minima nihil tempora? Harum autem saepe cum officiis assumenda hic. Quas eaque facilis necessitatibus labore earum tenetur saepe nesciunt!"
+    },
+    {
+      "id": "2383f2f3-3e85-47ff-b37b-13990178281a",
+      "name": "Tomorrow",
+      "dueDate": "2023-03-29",
+      "done": "0",
+      "priority": "Low",
+      "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus ex, quidem perspiciatis at minima nihil tempora? Harum autem saepe cum officiis assumenda hic. Quas eaque facilis necessitatibus labore earum tenetur saepe nesciunt!"
+    }
+  ]
+}

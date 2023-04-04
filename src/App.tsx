@@ -42,7 +42,6 @@ function App() {
                   </a>
                 ))}
               </nav>
-
             </div>
             <div className=" px-10 py-2">
               <RouterProvider router={router} />
