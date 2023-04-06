@@ -17,7 +17,7 @@ function App() {
     },
     {
       path: "/detail/:id",
-      element: <div>Todo Detail</div>, //** TODO: replace by detail page here*
+      element: <div>Todo Detail</div>, 
     },
   ]);
   const navs = [["Home", "/"], ["Add", "/add"]];
@@ -35,6 +35,7 @@ function App() {
               <nav className="flex sm:justify-center space-x-4">
                 {navs.map(([title, url]) => (
                   <a
+                   key={title}
                     href={url}
                     className="rounded-lg px-3 py-2 text-slate-700 font-medium hover:bg-slate-100 hover:text-slate-900"
                   >

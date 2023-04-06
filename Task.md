@@ -48,3 +48,10 @@ Modify create ToDoItem screen to allow user editing existing item. Add edit butt
 
 # zod for validations
 # create create-react-form
+
+TASK
+=------
+- Fix auto reload 
+- fix test 
+- learn storybook
+- Read why did you render 

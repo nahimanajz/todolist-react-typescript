@@ -1,3 +1,4 @@
+import { log } from "console";
 import { Todo } from "models/Todo";
 
 const {REACT_APP_SERVER_URL: SERVER_URL} = process.env
@@ -25,9 +26,13 @@ export const deleteItem = async<TResponse>(id: string): Promise<TResponse> => {
 }
 
 export const updateTodo = async <TResponse>(todo: Todo): Promise<TResponse> => {
+  console.log("service", todo)
   return await fetch(`${SERVER_URL}/${todo.id}`, routeConfig("PUT", todo))
     .then(response => response.json())
-    .then(data => data as TResponse)
+    .then(data =>{
+      console.log("response", data)
+     return data as TResponse
+    } )
     .catch(err => err);
 
 }

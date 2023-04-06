@@ -16,15 +16,15 @@ const TaskItem = ({ todo }: { todo: Todo }) => {
 
   const queryClient = new QueryClient();
 
-  const { mutate: deleteTodo } = useMutation((id: string) => deleteItem(id), {
+  const { mutate } = useMutation((id: string) => deleteItem(id), {
     onSuccess: () => {
-      queryClient.invalidateQueries(["todos"]);
+      queryClient.invalidateQueries({queryKey: ['todos']});
       toast.info("Record is deleted")
     },
   });
 
   const handleDeleteTodo = (id: string) => {
-    deleteTodo(id);
+    mutate(id);
   };
 
   return (

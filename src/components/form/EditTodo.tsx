@@ -14,7 +14,7 @@ interface EditTodoProps {
   todo: Todo;
 }
 
-export const EditTodo = ({ todo }: EditTodoProps) => {
+export const EditTodo = ({ todo: todo }: EditTodoProps) => {
   const [showModal, setShowModal] = useState(false);
 
   const { id, name, done, text, dueDate, priority } = todo;
@@ -28,21 +28,22 @@ export const EditTodo = ({ todo }: EditTodoProps) => {
     defaultValues: { id, name, done, text, dueDate, priority },
   });
 
-
   const queryClient = new QueryClient();
-  const { mutate: updateTodoItem } = useMutation((todo: Todo) => updateTodo(todo), {
-    onSuccess: () => {
-      toast.success("Record updated ")
-      queryClient.invalidateQueries(["todos"]);
-    
+  const { mutate } = useMutation(
+    (updatedTodo: Todo) => updateTodo(updatedTodo),
+    {
+      onSuccess() {
+        queryClient.invalidateQueries(["todos"]);
+        toast.success("Record updated ")
+       
+      },
     }
-  });
+  );
 
   const handleUpdate: SubmitHandler<Todo> = (todo: Todo) => {
-    updateTodoItem(todo);
+    mutate(todo);
     setShowModal(false);
   };
-
 
   return (
     <>
@@ -108,7 +109,7 @@ export const EditTodo = ({ todo }: EditTodoProps) => {
                           htmlFor="dueDate"
                           className="block text-sm font-medium text-gray-700"
                         >
-                          Due Date 
+                          Due Date
                         </label>
                         <input
                           type="date"
@@ -157,8 +158,12 @@ export const EditTodo = ({ todo }: EditTodoProps) => {
                           autoComplete="priority"
                           className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                         >
-                          {(Object.keys(Priority)).map((key, index) => <option value={key} key={index}> {key} </option>)}
-
+                          {Object.keys(Priority).map((key, index) => (
+                            <option value={key} key={index}>
+                              {" "}
+                              {key}{" "}
+                            </option>
+                          ))}
                         </select>
                       </div>
                       <div className="col-span-6 sm:col-span-3">
@@ -179,10 +184,8 @@ export const EditTodo = ({ todo }: EditTodoProps) => {
                           {errors.text?.message}
                         </small>
                       </div>
-
                     </div>
                   </div>
-
 
                   <div className="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b  border-b border-solid border-slate-200 mt-10">
                     <button
