@@ -1,0 +1,5 @@
+**/*.test.tsx
+node_modules/**
+.storybook/**
+src/stories/**
+src/components/ui/header.tsx

@@ -29,6 +29,10 @@ No- need to add on response types on fetch and axios
 
 //using absolute path
 
+## Fixing eslint err
+`npm run lint -- --fix`
+
+
 **todo:**
 
 ** fetch actual todos from server

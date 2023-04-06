@@ -7,7 +7,7 @@ import { SubmitHandler } from "react-hook-form/dist/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { createTodo } from "services/todo_service";
 import { DataSchema } from "utils/validations";
-import { QueryClient, useMutation} from "@tanstack/react-query";
+import {useMutation, useQueryClient} from "@tanstack/react-query";
 
 export const AddTask: FC = () => {
   const navigate = useNavigate();
@@ -28,12 +28,12 @@ export const AddTask: FC = () => {
     },
   });
 
-  const queryClient = new QueryClient();
+  const queryClient = useQueryClient();
   const { mutate: createTodoRecord } = useMutation(
     (todo: Todo) => createTodo(todo),
     {
       onSuccess: () => {
-        queryClient.invalidateQueries({queryKey: ['todos']});
+        queryClient.invalidateQueries({queryKey: ["todos"]});
         navigate("/");
       },
     }

@@ -2,8 +2,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
 import { AddTask } from "./pages/AddTask";
 import { TasksList } from "./pages/Tasks";
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const router = createBrowserRouter([
@@ -31,11 +31,11 @@ function App() {
         </div>
         <div className="w-4/5 flex justify-center">
           <div className="flex flex-col">
-            <div className=" h-1/6">
+            <div className="h-1/6">
               <nav className="flex sm:justify-center space-x-4">
                 {navs.map(([title, url]) => (
                   <a
-                   key={title}
+                    key={title}
                     href={url}
                     className="rounded-lg px-3 py-2 text-slate-700 font-medium hover:bg-slate-100 hover:text-slate-900"
                   >

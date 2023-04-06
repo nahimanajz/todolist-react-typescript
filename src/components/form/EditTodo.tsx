@@ -1,11 +1,10 @@
 import { Priority, Todo } from "models/Todo";
-
 import { PencilSquareIcon } from "@heroicons/react/24/solid";
 import { useState } from "react";
 import { updateTodo } from "services/todo_service";
 import { useForm } from "react-hook-form";
 import { SubmitHandler } from "react-hook-form/dist/types";
-import { QueryClient, useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { DataSchema } from "utils/validations";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "react-toastify";
@@ -16,7 +15,6 @@ interface EditTodoProps {
 
 export const EditTodo = ({ todo: todo }: EditTodoProps) => {
   const [showModal, setShowModal] = useState(false);
-
   const { id, name, done, text, dueDate, priority } = todo;
 
   const {
@@ -28,14 +26,13 @@ export const EditTodo = ({ todo: todo }: EditTodoProps) => {
     defaultValues: { id, name, done, text, dueDate, priority },
   });
 
-  const queryClient = new QueryClient();
+  const queryClient = useQueryClient();
   const { mutate } = useMutation(
     (updatedTodo: Todo) => updateTodo(updatedTodo),
     {
       onSuccess() {
         queryClient.invalidateQueries(["todos"]);
         toast.success("Record updated ")
-       
       },
     }
   );
@@ -43,7 +40,7 @@ export const EditTodo = ({ todo: todo }: EditTodoProps) => {
   const handleUpdate: SubmitHandler<Todo> = (todo: Todo) => {
     mutate(todo);
     setShowModal(false);
-  };
+  }
 
   return (
     <>
@@ -203,4 +200,4 @@ export const EditTodo = ({ todo: todo }: EditTodoProps) => {
       ) : null}
     </>
   );
-};
+}

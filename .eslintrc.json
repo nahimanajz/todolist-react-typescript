@@ -1,0 +1,39 @@
+{
+    "parser": "@typescript-eslint/parser",
+    "plugins": ["@typescript-eslint"],
+    "extends": [
+      "eslint:recommended",
+      "prettier",
+      "plugin:@typescript-eslint/recommended"
+    ],
+    "env": {
+      "browser": true,
+      "es6": true
+    },
+    "globals": {
+      "process": true
+    },
+    "parserOptions": {
+      "ecmaFeatures": { "jsx": true, "tsx": true },
+      "ecmaVersion": 2018,
+      "project": "./tsconfig.json",
+      "sourceType": "module"
+    },
+    "rules": {
+      "@typescript-eslint/explicit-function-return-type": "off",
+      "@typescript-eslint/explicit-member-accessibility": "error",
+      "@typescript-eslint/member-ordering": "error",
+      "@typescript-eslint/no-explicit-any": "error",
+      "@typescript-eslint/no-unused-vars": "error",
+      "@typescript-eslint/prefer-interface": "off",
+      "no-console": "error",
+      "no-alert": "error",
+      "indent": ["error", 2],
+      "quotes": ["error", "double", {"allowTemplateLiterals": true}],
+      "no-empty": "error",
+      "no-cond-assign": ["error", "always"],
+      "for-direction": "error",
+      "no-inline-comments": "error"
+    }
+  }
+  

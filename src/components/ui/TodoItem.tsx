@@ -6,7 +6,7 @@ import {
   TrashIcon,
 } from "@heroicons/react/24/solid";
 import { EditTodo } from "../form/EditTodo";
-import { QueryClient, useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { deleteItem } from "services/todo_service";
 import { toast } from "react-toastify";
 
@@ -14,13 +14,13 @@ import { toast } from "react-toastify";
 const TaskItem = ({ todo }: { todo: Todo }) => {
   const { id, name, done, text, dueDate, priority } = todo;
 
-  const queryClient = new QueryClient();
+  const queryClient = useQueryClient();
 
   const { mutate } = useMutation((id: string) => deleteItem(id), {
     onSuccess: () => {
-      queryClient.invalidateQueries({queryKey: ['todos']});
+      queryClient.invalidateQueries({ queryKey: ["todos"] });
       toast.info("Record is deleted")
-    },
+    }
   });
 
   const handleDeleteTodo = (id: string) => {
@@ -43,7 +43,7 @@ const TaskItem = ({ todo }: { todo: Todo }) => {
               : priority === `Low`
                 ? "red"
                 : "green"
-              }-500`}
+            }-500`}
           >
             {priority}
           </h2>
