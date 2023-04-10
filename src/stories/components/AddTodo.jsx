@@ -1,51 +1,9 @@
-import { Priority, Todo } from "models/Todo";
-import { FC } from "react";
-import { v4 as uuidv4 } from "uuid";
-import { useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
-import { SubmitHandler } from "react-hook-form/dist/types";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { createTodo } from "services/todo_service";
-import { DataSchema } from "utils/validations";
-import {useMutation, useQueryClient} from "@tanstack/react-query";
+import { Priority } from "models/Todo";
 
-export const AddTask: FC = () => {
-  const navigate = useNavigate();
-
-  const {
-    register,
-    formState: { errors },
-    handleSubmit,
-  } = useForm<Todo>({
-    resolver: zodResolver(DataSchema),
-    defaultValues: {
-      id: uuidv4(),
-      name: "",
-      priority: Priority.Low,
-      dueDate: new Date(),
-      done: false,
-      text: "",
-    },
-  });
-
-  const queryClient = useQueryClient();
-  const { mutate: createTodoRecord } = useMutation(
-    (todo: Todo) => createTodo(todo),
-    {
-      onSuccess: () => {
-        queryClient.invalidateQueries({queryKey: ["todos"]});
-        navigate("/");
-      },
-    }
-  );
-
-  const onSubmit: SubmitHandler<Todo> = (data: Todo) => {
-    createTodoRecord(data);
-  };
-
+const AddTodo = ({ onClick }) => {
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={onClick}>
         <div className="shadow hover:shadow-md w-96 py-6 px-10">
           <div className="space-y-6">
             <h5 className="text-xl font-medium text-gray-900 text-blue-700">
@@ -58,10 +16,7 @@ export const AddTask: FC = () => {
               >
                 Name
               </label>
-              <input
-                {...register("name", { required: true })}
-                className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-              />
+              <input className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
               <small className=" text-red-700 font-medium">
                 {errors.name?.message}
               </small>
@@ -76,19 +31,12 @@ export const AddTask: FC = () => {
               </label>
               <input
                 type="date"
-                {...register("dueDate", { required: true })}
                 className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               />
-              <small className=" text-red-700 font-medium">
-                {" "}
-                {errors.dueDate?.message}
-              </small>
+              <small className=" text-red-700 font-medium"> </small>
             </div>
 
-            <small className=" text-red-700 font-medium">
-              {" "}
-              {errors.done?.message}
-            </small>
+            <small className=" text-red-700 font-medium"> </small>
 
             <div className="col-span-6 sm:col-span-3">
               <label
@@ -99,7 +47,6 @@ export const AddTask: FC = () => {
               </label>
               <select
                 id="priority"
-                {...register("priority", { required: true })}
                 autoComplete="priority"
                 className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               >
@@ -110,10 +57,7 @@ export const AddTask: FC = () => {
                   </option>
                 ))}
               </select>
-              <small className=" text-red-700 font-medium">
-                {" "}
-                {errors.priority?.message}
-              </small>
+              <small className=" text-red-700 font-medium"> </small>
             </div>
             <div className="col-span-6 sm:col-span-3">
               <label
@@ -125,14 +69,10 @@ export const AddTask: FC = () => {
               <textarea
                 id="message"
                 rows={4}
-                {...register("text", { required: true })}
                 className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-900 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Write your thoughts here..."
               ></textarea>
-              <small className=" text-red-700 font-medium">
-                {" "}
-                {errors.text?.message}
-              </small>
+              <small className=" text-red-700 font-medium"> </small>
             </div>
 
             <button
@@ -147,3 +87,5 @@ export const AddTask: FC = () => {
     </>
   );
 };
+
+export default AddTodo;
