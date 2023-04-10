@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
-import { AddTask } from "./pages/AddTask";
-import { TasksList } from "./pages/Tasks";
+import { AddTodo } from "./pages/AddTodo";
+import { TodoList } from "./pages/Todos";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -9,11 +9,11 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <TasksList />,
+      element: <TodoList />,
     },
     {
       path: "/add",
-      element: <AddTask />,
+      element: <AddTodo />,
     },
     {
       path: "/detail/:id",

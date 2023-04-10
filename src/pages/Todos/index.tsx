@@ -5,7 +5,7 @@ import TodoItem from "components/ui/TodoItem";
 import { useQuery } from "@tanstack/react-query";
 import { fetchTodo } from "services/todo_service";
 
-export const TasksList: FC = () => {
+export const TodoList: FC = () => {
   const { isLoading, error, data } = useQuery<Todo[], Error>(["todos"], fetchTodo);
 
   if (isLoading) return <div>Loading...</div>;
