@@ -37,7 +37,8 @@
     "server": "json-server --watch -p 4000 data/db.json",
     "lint": "eslint --ext ts,tsx src --quiet",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "chromatic": "npx chromatic --project-token=ca1cdc062e5d"
   },
   "browserslist": {
     "production": [
@@ -71,6 +72,7 @@
     "babel-eslint": "^10.1.0",
     "babel-jest": "^29.5.0",
     "babel-plugin-named-exports-order": "^0.0.2",
+    "chromatic": "^6.17.3",
     "enzyme": "^3.11.0",
     "enzyme-to-json": "^3.6.2",
     "eslint": "^8.37.0",
@@ -114,5 +116,7 @@
       }
     ]
   },
-  "parser": "babel-eslint"
+  "parser": "babel-eslint",
+  "readme": "ERROR: No README data found!",
+  "_id": "todolist@0.1.0"
 }

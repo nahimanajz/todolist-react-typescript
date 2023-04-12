@@ -1,40 +1,37 @@
-`assets`: The assets folder contains all images, css files, font files,
-`data`: contains temporary db json server
-`utils` folder. This folder is for storing all utility functions such as formatters
-`context`: stores redux store 
+# Introduction:
 
-Task
------ 
-- Read typescript documentation✔
-- Create github repository and send the link to Marcin✔
-- Designing pages and site map for the task
-- Create model  and proceed with the task
-- install tailwind
+This is an application for listing tasks and prioritize the main objectivive is to upskill react along with typescript
 
-pages order
-----------------
+## Installation Guide
 
--> Onboarding: list of tasks with button to open dialog which can add new todo
--> Once new task is added it immediately appear to the list of todos 
--> on the list of to do which are cards they will be edit and delete button icons
--> once user clicks on edit icon pop up `modal` will show up with details of clicked todo so that user can modify them then 
-modified item will be shown on the list immediately without refresh
--> Once user clicks on delete icon confirmation popup dialog will be shown up
+Later on cloning this repository follow the following steps
 
+```
+cd todolist-react-typescript
+npm install
+npm run server
+npm start
+npm test
+```
 
-// npm i classname package for checking conditions
-No- need to add on response types on fetch and axios 
--use  small type fields 
-// suggestee using arrow functions 
+# Tools
 
-//using absolute path
+- ReactJs
+- Typescript
+- Json server as my backend service
+  -Tailwind CSS
+- [Jest](https://jestjs.io/docs/tutorial-react) and [enzymes](https://enzymejs.github.io/enzyme/) for testing along with this `  "@zarconontol/enzyme-adapter-react-18": "^0.7.3",`
+- Eslint
+- [Storybook](https://www.chromatic.com/build?appId=64365959483e632c2ac6ff0e&number=2)
 
 ## Fixing eslint err
+
 `npm run lint -- --fix`
 
+# Mates and mentors
 
-**todo:**
-
-** fetch actual todos from server
-** create new todo
-** work on feedback
+* Marcin Bien
+* Fazhley Kholil
+* Mahoro Costa Pierratono
+* Ntwali Hugues
+* Ndahimana Dominique
