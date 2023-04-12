@@ -1,5 +1,5 @@
-import { Priority } from "models/Todo";
 import "../../index.css";
+import PropTypes from "prop-types";
 
 const AddTodo = ({ onClick, dueDate, name, priority, text }) => {
   return (
@@ -89,6 +89,13 @@ const AddTodo = ({ onClick, dueDate, name, priority, text }) => {
       </div>
     </form>
   );
+};
+
+AddTodo.propTypes = {
+  dueDate: PropTypes.any.isRequired,
+  name: PropTypes.string.isRequired,
+  priority: PropTypes.oneOf(["High", "Medium", "Low"]).isRequired,
+  text: PropTypes.string.isRequired,
 };
 
 export default AddTodo;
