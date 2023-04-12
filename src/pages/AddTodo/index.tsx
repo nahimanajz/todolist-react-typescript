@@ -9,7 +9,7 @@ import { createTodo } from "services/todo_service";
 import { DataSchema } from "utils/validations";
 import {useMutation, useQueryClient} from "@tanstack/react-query";
 
-export const AddTask: FC = () => {
+export const AddTodo: FC = () => {
   const navigate = useNavigate();
 
   const {
