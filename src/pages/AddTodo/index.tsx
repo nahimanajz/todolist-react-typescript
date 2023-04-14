@@ -23,7 +23,7 @@ export const AddTodo: FC = () => {
       name: "",
       priority: Priority.Low,
       dueDate: new Date(),
-      done: false,
+      done: "0",
       text: "",
     },
   });

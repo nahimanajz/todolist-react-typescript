@@ -119,27 +119,22 @@ export const EditTodo = ({ todo: todo }: EditTodoProps) => {
                       </div>
 
                       <div className="flex col-span-6 sm:col-span-3">
+
                         <label
-                          htmlFor="done"
-                          className="block text-sm font-medium text-gray-700 mr-3"
+                          htmlFor="default-radio-1"
+                          className="ml-2 block text-sm font-medium text-gray-700"
                         >
-                          Done?
+                          Mark as complete
                         </label>
                         <div className="flex items-center mb-4">
                           <input
                             id="default-radio-1"
                             type="checkbox"
-                            checked={done}
+                            checked={done == "1" ? true : false}
                             defaultValue={`${done}`}
                             {...register("done")}
                             className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:border-gray-600"
                           />
-                          <label
-                            htmlFor="default-radio-1"
-                            className="ml-2 block text-sm font-medium text-gray-700"
-                          >
-                            Mark as complete
-                          </label>
                         </div>
                       </div>
                       <div className="col-span-6 sm:col-span-3">
