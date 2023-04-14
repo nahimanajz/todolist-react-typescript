@@ -40,7 +40,7 @@ export const EditTodo = ({ todo: todo }: EditTodoProps) => {
   const handleUpdate: SubmitHandler<Todo> = (todo: Todo) => {
     mutate(todo);
     setShowModal(false);
-  }
+  };
 
   return (
     <>
@@ -59,6 +59,7 @@ export const EditTodo = ({ todo: todo }: EditTodoProps) => {
                 {/*header*/}
                 <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
                   <h3 className="text-3xl font-semibold">Edit Task</h3>
+                 
                   <button
                     onClick={() => setShowModal(false)}
                     type="button"
@@ -82,6 +83,7 @@ export const EditTodo = ({ todo: todo }: EditTodoProps) => {
                   </button>
                 </div>
                 {/*body*/}
+                
                 <form onSubmit={handleSubmit(handleUpdate)}>
                   <div className="relative px-12 flex-auto w-96">
                     <div className="space-y-6">
@@ -119,19 +121,16 @@ export const EditTodo = ({ todo: todo }: EditTodoProps) => {
                       </div>
 
                       <div className="flex col-span-6 sm:col-span-3">
-
                         <label
                           htmlFor="default-radio-1"
                           className="ml-2 block text-sm font-medium text-gray-700"
                         >
-                          Mark as complete
+                          Mark as complete {` `}
                         </label>
-                        <div className="flex items-center mb-4">
+                        <div className="flex items-center mb-4 mr-5">
                           <input
                             id="default-radio-1"
-                            type="checkbox"
-                            checked={done == "1" ? true : false}
-                            defaultValue={`${done}`}
+                            type="checkbox"                           
                             {...register("done")}
                             className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:border-gray-600"
                           />
@@ -195,4 +194,4 @@ export const EditTodo = ({ todo: todo }: EditTodoProps) => {
       ) : null}
     </>
   );
-}
+};
