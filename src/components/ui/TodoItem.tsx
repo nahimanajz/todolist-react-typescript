@@ -10,12 +10,9 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { deleteItem } from "services/todo_service";
 import { toast } from "react-toastify";
 
-
 const TaskItem = ({ todo }: { todo: Todo }) => {
   const { id, name, done, text, dueDate, priority } = todo;
-
   const queryClient = useQueryClient();
-
   const { mutate } = useMutation((id: string) => deleteItem(id), {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["todos"] });
@@ -36,20 +33,10 @@ const TaskItem = ({ todo }: { todo: Todo }) => {
           <h1 className="text-slate-500 dark:text-slate-700 font-bold">
             {name}
           </h1>
-
-          <h2
-            className={`text-${priority === `High`
-              ? "yellow"
-              : priority === `Low`
-                ? "red"
-                : "green"
-            }-500`}
-          >
+          <h2 className={`text-${priority===`High`?"yellow":priority===`Low` ? "red":"green"}-500`}>
             {priority}
           </h2>
-          {done ? (
-            <CheckCircleIcon className="h-6 w-6 text-green-500" />
-          ) : (
+          {done === true ? (<CheckCircleIcon className="h-6 w-6 text-green-500" />) : (
             <NoSymbolIcon className="h-6 w-6 text-red-500" />
           )}
         </div>
